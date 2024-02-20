@@ -1,5 +1,10 @@
 #include "UnsortedList.h"
 
+/* O(1) for inserting
+ *
+ *  Really slow at finding items in the array O(n)
+ *  Bad for growing
+ */
 template<class T>
 UnsortedList<T>::UnsortedList() {
     length = 0;
@@ -9,6 +14,7 @@ UnsortedList<T>::UnsortedList() {
 template<class T>
 void UnsortedList<T>::MakeEmpty() {
     length = 0;
+    currentPos = 0;
 }
 
 template<class T>
@@ -34,7 +40,7 @@ bool UnsortedList<T>::Contains(T someItem) {
 
 template<class T>
 void UnsortedList<T>::AddItem(T item) {
-    if(!IsFull())
+    if(length < MAX_ITEMS)
         arr[length++] = item;
 }
 
